@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOVIES | Luxury OTT Streaming</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="backdrop-overlay"></div>
+  <div class="backdrop-glow"></div>
+
+  <nav class="navbar">
+    <a href="#" class="nav-logo" onclick="showView('home')">MOVIES</a>
+    <div class="nav-links">
+      <a href="#" class="nav-link active" onclick="showView('home')">Home</a>
+      <a href="#" class="nav-link" onclick="showView('movies')">Movies</a>
+      <a href="#" class="nav-link" onclick="showView('series')">Web Series</a>
+    </div>
+    <div class="nav-right">
+      <div class="nav-theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+        <i class="ti ti-moon" id="theme-icon"></i>
+      </div>
+      <div class="nav-search">
+        <i class="ti ti-search"></i>
+        <input type="text" id="searchInput" placeholder="Search movies or series..." oninput="handleSearch()">
+      </div>
+    </div>
+  </nav>
+
+  <main id="mainContent">
+    <!-- Views will be injected here -->
+  </main>
+
+  <!-- TEMPLATES -->
+  <div id="view-home" class="view">
+    <div class="hero" id="hero-section">
+      <!-- Hero content injected by JS -->
+    </div>
+    
+    <section class="section">
+      <h2 class="section-title"><i class="ti ti-movie"></i> Latest Movies</h2>
+      <div class="grid" id="home-movies-grid"></div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title"><i class="ti ti-device-tv"></i> Trending Web Series</h2>
+      <div class="grid" id="home-series-grid"></div>
+    </section>
+  </div>
+
+  <div id="view-movies" class="view hidden">
+    <section class="section">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;">
+        <h2 class="section-title">All Movies</h2>
+        <div class="filters">
+          <!-- Filters added here if needed -->
+        </div>
+      </div>
+      <div class="grid" id="all-movies-grid"></div>
+    </section>
+  </div>
+
+  <div id="view-series" class="view hidden">
+    <section class="section">
+      <h2 class="section-title">All Web Series</h2>
+      <div class="grid" id="all-series-grid"></div>
+    </section>
+  </div>
+
+  <div id="view-detail" class="view hidden">
+    <div class="hero" id="detail-hero"></div>
+    <section class="section" id="detail-episodes-section" class="hidden">
+      <h2 class="section-title">Episodes</h2>
+      <div class="episode-grid" id="episode-grid"></div>
+    </section>
+  </div>
+
+  <div id="view-player" class="view hidden">
+    <div class="player-container">
+      <div class="video-player">
+        <iframe id="mainPlayer" allowfullscreen allow="autoplay; fullscreen"></iframe>
+      </div>
+      <div id="player-info">
+        <h1 id="player-title" style="font-size:28px; font-weight:900; margin-bottom:10px;"></h1>
+        <p id="player-desc" style="color:var(--text-muted); font-size:16px; margin-bottom:20px;"></p>
+        <div style="display:flex; justify-content: space-between; align-items: center; background: var(--glass); border: 1px solid var(--glass-border); padding: 15px 25px; border-radius: 15px; margin-bottom: 25px;">
+          <div style="display:flex; align-items:center; gap:15px;">
+            <div style="color:var(--gold); font-size:20px;"><i class="ti ti-sparkles"></i></div>
+            <div>
+              <div style="font-weight:700; font-size:14px; letter-spacing:1px; text-transform:uppercase;">Visual Enhancer</div>
+              <div style="font-size:11px; color:var(--text-muted);">Simulate 4K HDR Vivid Colors</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:10px;">
+            <button class="btn-enhancer" onclick="toggleEnhancer('hdr')" id="btn-hdr">HDR Mode</button>
+            <button class="btn-enhancer" onclick="toggleEnhancer('vivid')" id="btn-vivid">Vivid</button>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:15px;">
+          <button class="btn btn-secondary" onclick="showView('home')"><i class="ti ti-arrow-left"></i> Back to Home</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="view-search" class="view hidden">
+    <section class="section">
+      <h2 class="section-title">Search Results</h2>
+      <div class="grid" id="search-grid"></div>
+    </section>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
